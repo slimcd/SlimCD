@@ -1,0 +1,19 @@
+{
+  "name": "SlimCD/SlimCD",
+  "description": "SlimCD",
+  "license": "MIT",
+  "keywords": ["SlimCD", "payment", "gateway"],
+  "authors": [
+    {
+      "name": "Levi Durfee",
+      "email": "ldurfee@bulldogcreative.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "SlimCD\\": "src"
+    }
+  }
+}
