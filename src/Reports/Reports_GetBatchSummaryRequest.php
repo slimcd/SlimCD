@@ -2,6 +2,8 @@
 
 namespace SlimCD\Reports;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Reports_GetBatchSummaryRequest
 {
     // property declaration
@@ -11,7 +13,5 @@ class Reports_GetBatchSummaryRequest
     public $startdate = '';
     public $enddate = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

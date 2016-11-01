@@ -2,6 +2,8 @@
 
 namespace SlimCD\Images;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Images_DownloadSignatureRequest
 {
     // property declaration
@@ -9,7 +11,5 @@ class Images_DownloadSignatureRequest
     public $password = '';
     public $gateid = 0;
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

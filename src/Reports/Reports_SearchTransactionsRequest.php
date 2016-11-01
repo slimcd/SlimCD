@@ -2,6 +2,8 @@
 
 namespace SlimCD\Reports;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Reports_SearchTransactionsRequest
 {
     // property declaration
@@ -28,7 +30,5 @@ class Reports_SearchTransactionsRequest
     public $gateid = 0;
     public $reverseorder = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

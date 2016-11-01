@@ -2,6 +2,8 @@
 
 namespace SlimCD\Reports;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Reports_GetDailySummaryRequest
 {
     // property declaration
@@ -14,7 +16,5 @@ class Reports_GetDailySummaryRequest
     public $startdate = '';
     public $enddate = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

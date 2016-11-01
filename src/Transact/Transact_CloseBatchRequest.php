@@ -2,6 +2,8 @@
 
 namespace SlimCD\Transact;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Transact_CloseBatchRequest
 {
     // property declaration
@@ -10,7 +12,5 @@ class Transact_CloseBatchRequest
     public $siteid = 0;
     public $batchnumber = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

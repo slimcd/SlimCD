@@ -2,6 +2,8 @@
 
 namespace SlimCD\Sessions;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Sessions_DestroySessionsRequest
 {
     // property declaration
@@ -9,7 +11,5 @@ class Sessions_DestroySessionsRequest
     public $password = '';
     public $sessionid = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

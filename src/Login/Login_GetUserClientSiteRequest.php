@@ -2,6 +2,8 @@
 
 namespace SlimCD\Login;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Login_GetUserClientSiteRequest
 {
     // property declaration
@@ -10,7 +12,5 @@ class Login_GetUserClientSiteRequest
     public $clientid = 0;
     public $siteid = 0;
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

@@ -2,6 +2,8 @@
 
 namespace SlimCD\Sessions;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Sessions_SearchSessionsRequest
 {
     // property declaration
@@ -22,7 +24,5 @@ class Sessions_SearchSessionsRequest
     public $cancelled = '';
     public $reverseorder = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

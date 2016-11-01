@@ -2,6 +2,8 @@
 
 namespace SlimCD\Reports;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Reports_GetOpenAuthsRequest
 {
     // property declaration
@@ -11,7 +13,5 @@ class Reports_GetOpenAuthsRequest
     public $StartDate ='';
     public $EndDate ='';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

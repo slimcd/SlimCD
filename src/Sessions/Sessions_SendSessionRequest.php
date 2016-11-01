@@ -2,6 +2,8 @@
 
 namespace SlimCD\Sessions;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Sessions_SendSessionRequest
 {
     // property declaration
@@ -16,7 +18,5 @@ class Sessions_SendSessionRequest
     public $send_sms = '';
     public $phone = 0;
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

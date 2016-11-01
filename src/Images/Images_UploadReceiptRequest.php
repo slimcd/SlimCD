@@ -2,6 +2,8 @@
 
 namespace SlimCD\Images;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Images_UploadReceiptRequest
 {
     // property declaration
@@ -12,7 +14,5 @@ class Images_UploadReceiptRequest
     public $filetype = '';
     public $imagedata = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

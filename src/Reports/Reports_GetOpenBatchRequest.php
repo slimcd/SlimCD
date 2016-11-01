@@ -2,6 +2,8 @@
 
 namespace SlimCD\Reports;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Reports_GetOpenBatchRequest
 {
     // property declaration
@@ -9,7 +11,5 @@ class Reports_GetOpenBatchRequest
     public $password = '';
     public $siteid = 0;
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }

@@ -2,6 +2,8 @@
 
 namespace SlimCD\Transact;
 
+use \SlimCD\jsonSerializeTrait;
+
 class Transact_ProcessTransactionRequest
 {
     public $username = '' ;
@@ -86,7 +88,5 @@ class Transact_ProcessTransactionRequest
     public $send_sms = '';
     public $cc_email = '';
 
-    public function jsonSerialize() {
-        return (get_object_vars($this));
-    }
+    use jsonSerializeTrait;
 }
