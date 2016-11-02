@@ -5,7 +5,6 @@ namespace SlimCD;
 /**
  * Class SlimCD
  * @package SlimCD
- * @todo change SlimCD method names
  * @todo add doc blocks
  */
 abstract class SlimCD implements Interfaces\SlimCD
@@ -17,7 +16,7 @@ abstract class SlimCD implements Interfaces\SlimCD
     protected $recvdata;
     protected $default_timeout = 600;
 
-    protected function StandardErrorBlock($url, $errortext)
+    protected function standardErrorBlock($url, $errortext)
     {
         $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errortext , 'responseurl' => $url ,'datablock' => '');
         $result = (object) array('reply' => $reply) ;
@@ -25,11 +24,11 @@ abstract class SlimCD implements Interfaces\SlimCD
         return ($result);
     }
 
-    protected function HttpPost($urlString, $timeout, $namevalueArray)
+    protected function httpPost($urlString, $timeout, $namevalueArray)
     {
         $ch = curl_init($urlString);
 
-        curl_setopt($ch,CURLOPT_TIMEOUT,$timeout) ;
+        curl_setopt($ch,CURLOPT_TIMEOUT, $timeout) ;
         curl_setopt($ch, CURLOPT_POST, 1);
 
         $this->senddata = http_build_query($namevalueArray) ;
@@ -47,14 +46,14 @@ abstract class SlimCD implements Interfaces\SlimCD
         $this->recvdata = curl_exec($ch);
 
         if(curl_errno($ch)) {
-            $result = $this->StandardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
+            $result = $this->standardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
         } else {
 
             $httpstatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
             if (intval($httpstatus) !== 200 || ($contentType !== 'application/json' && $contentType !== 'text/javascript')) {
-                $result =  $this->StandardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->recvdata) ;
+                $result =  $this->standardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->recvdata) ;
             } else {
                 $result = json_decode($this->recvdata);
             }
@@ -84,7 +83,7 @@ abstract class SlimCD implements Interfaces\SlimCD
                         $errortext = ' - Unknown JSON error';
                         break;
                 }
-                $result = $this->StandardErrorBlock($urlString, $errortext);
+                $result = $this->standardErrorBlock($urlString, $errortext);
             }
         }
 

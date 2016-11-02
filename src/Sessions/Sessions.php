@@ -6,37 +6,37 @@ use SlimCD\SlimCD;
 
 class Sessions extends SlimCD implements \SlimCD\Interfaces\Sessions
 {
-    public function Sessions_CancelSession(CancelSessionRequest $request, $timeout = false)
+    public function cancelSession(CancelSessionRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CancelSession", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CancelSession", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_CheckSession(CheckSessionRequest $request, $timeout = false)
+    public function checkSession(CheckSessionRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CheckSession", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CheckSession", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_CreateSession(CreateSessionRequest $request, $timeout = false)
+    public function createSession(CreateSessionRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CreateSession", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CreateSession", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_DestroySessions(DestroySessionsRequest $request, $timeout = false)
+    public function destroySessions(DestroySessionsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DestroySessions", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DestroySessions", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_GetSessionFields(GetSessionFieldsRequest $request, $timeout = false)
+    public function getSessionFields(GetSessionFieldsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetSessionFields", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetSessionFields", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_MultiSession(MultiSessionRequest $request)
+    public function multiSession(MultiSessionRequest $request)
     {
         if($request->amount == "") {
             return ($this->statsURL . "/soft/mulisession.asp?sessionid=" . urlencode($request->sessionid));
@@ -45,26 +45,26 @@ class Sessions extends SlimCD implements \SlimCD\Interfaces\Sessions
         }
     }
 
-    public function Sessions_SearchSessions(SearchSessionsRequest $request, $timeout = false)
+    public function searchSessions(SearchSessionsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchSessions", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchSessions", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_SendSession(SendSessionRequest $request, $timeout = false)
+    public function sendSession(SendSessionRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SendSession", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SendSession", $timeout, $request->jsonSerialize()));
     }
 
-    public function Sessions_ShowSession(ShowSessionRequest $request)
+    public function showSession(ShowSessionRequest $request)
     {
         return ($this->statsURL . "/soft/showsession.asp?sessionid=" . urlencode($request->sessionid));
     }
 
-    public function Sessions_SpawnSessions(SpawnSessionsRequest $request, $timeout = false)
+    public function spawnSessions(SpawnSessionsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SpawnSessions", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SpawnSessions", $timeout, $request->jsonSerialize()));
     }
 }

@@ -6,21 +6,21 @@ use SlimCD\SlimCD;
 
 class Login extends SlimCD implements \SlimCD\Interfaces\Login
 {
-    public function Login_GetUserSettings(GetUserSettingsRequest $request, $timeout = false)
+    public function getUserSettings(GetUserSettingsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserSettings", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserSettings", $timeout, $request->jsonSerialize()));
     }
 
-    public function Login_GetUserClients(GetUserClientsRequest $request, $timeout = false)
+    public function getUserClients(GetUserClientsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClients", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClients", $timeout, $request->jsonSerialize()));
     }
 
-    public function Login_GetUserClientSite(GetUserClientSiteRequest $request, $timeout = false)
+    public function getUserClientSite(GetUserClientSiteRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClientSite", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClientSite", $timeout, $request->jsonSerialize()));
     }
 }

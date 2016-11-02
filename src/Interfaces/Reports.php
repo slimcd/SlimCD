@@ -12,12 +12,12 @@ use \SlimCD\Reports\GetTransactionDetailsRequest;
 use \SlimCD\Reports\GetBatchHistoryRequest;
 
 interface Reports {
-    public function Reports_GetOpenBatch(GetOpenBatchRequest $request, $timeout = false);
-    public function Reports_SearchTransactions(SearchTransactionsRequest $request, $timeout = false);
-    public function Reports_GetDailySummary(GetDailySummaryRequest $request, $timeout = false);
-    public function Reports_GetBatchSummary(GetBatchSummaryRequest $request, $timeout = false);
-    public function Reports_GetClosedBatchTransactions(GetClosedBatchTransactionsRequest $request, $timeout = false);
-    public function Reports_GetOpenAuths(GetOpenAuthsRequest $request, $timeout = false);
-    public function Reports_GetTransactionDetails(GetTransactionDetailsRequest $request, $timeout = false);
-    public function Reports_GetBatchHistory(GetBatchHistoryRequest $request, $timeout = false);
+    public function getOpenBatch(GetOpenBatchRequest $request, $timeout = false);
+    public function searchTransactions(SearchTransactionsRequest $request, $timeout = false);
+    public function getDailySummary(GetDailySummaryRequest $request, $timeout = false);
+    public function getBatchSummary(GetBatchSummaryRequest $request, $timeout = false);
+    public function getClosedBatchTransactions(GetClosedBatchTransactionsRequest $request, $timeout = false);
+    public function getOpenAuths(GetOpenAuthsRequest $request, $timeout = false);
+    public function getTransactionDetails(GetTransactionDetailsRequest $request, $timeout = false);
+    public function getBatchHistory(GetBatchHistoryRequest $request, $timeout = false);
 }

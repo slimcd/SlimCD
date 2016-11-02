@@ -14,14 +14,14 @@ use \SlimCD\Sessions\ShowSessionRequest;
 use \SlimCD\Sessions\SpawnSessionsRequest;
 
 interface Sessions {
-    public function Sessions_CancelSession(CancelSessionRequest $request, $timeout = false);
-    public function Sessions_CheckSession(CheckSessionRequest $request, $timeout = false);
-    public function Sessions_CreateSession(CreateSessionRequest $request, $timeout = false);
-    public function Sessions_DestroySessions(DestroySessionsRequest $request, $timeout = false);
-    public function Sessions_GetSessionFields(GetSessionFieldsRequest $request, $timeout = false);
-    public function Sessions_MultiSession(MultiSessionRequest $request);
-    public function Sessions_SearchSessions(SearchSessionsRequest $request, $timeout = false);
-    public function Sessions_SendSession(SendSessionRequest $request, $timeout = false);
-    public function Sessions_ShowSession(ShowSessionRequest $request);
-    public function Sessions_SpawnSessions(SpawnSessionsRequest $request, $timeout = false);
+    public function cancelSession(CancelSessionRequest $request, $timeout = false);
+    public function checkSession(CheckSessionRequest $request, $timeout = false);
+    public function createSession(CreateSessionRequest $request, $timeout = false);
+    public function destroySessions(DestroySessionsRequest $request, $timeout = false);
+    public function getSessionFields(GetSessionFieldsRequest $request, $timeout = false);
+    public function multiSession(MultiSessionRequest $request);
+    public function searchSessions(SearchSessionsRequest $request, $timeout = false);
+    public function sendSession(SendSessionRequest $request, $timeout = false);
+    public function showSession(ShowSessionRequest $request);
+    public function spawnSessions(SpawnSessionsRequest $request, $timeout = false);
 }

@@ -4,53 +4,53 @@ namespace SlimCD\Reports;
 
 use SlimCD\SlimCD;
 
-class Reports extends SlimCD
+class Reports extends SlimCD implements \SlimCD\Interfaces\Reports
 {
-    public function Reports_GetOpenBatch(GetOpenBatchRequest $request, $timeout = false)
+    public function getOpenBatch(GetOpenBatchRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenBatch2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenBatch2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_SearchTransactions(SearchTransactionsRequest $request, $timeout = false)
+    public function searchTransactions(SearchTransactionsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchTransactions2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchTransactions2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetDailySummary(GetDailySummaryRequest $request, $timeout = false)
+    public function getDailySummary(GetDailySummaryRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetDailySummary", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetDailySummary", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetBatchSummary(GetBatchSummaryRequest $request, $timeout = false)
+    public function getBatchSummary(GetBatchSummaryRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchSummary2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchSummary2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetClosedBatchTransactions(GetClosedBatchTransactionsRequest $request, $timeout = false)
+    public function getClosedBatchTransactions(GetClosedBatchTransactionsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetClosedBatchTransactions2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetClosedBatchTransactions2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetOpenAuths(GetOpenAuthsRequest $request, $timeout = false)
+    public function getOpenAuths(GetOpenAuthsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenAuths2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenAuths2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetTransactionDetails(GetTransactionDetailsRequest $request, $timeout = false)
+    public function getTransactionDetails(GetTransactionDetailsRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetTransactionDetails2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetTransactionDetails2", $timeout, $request->jsonSerialize()));
     }
 
-    public function Reports_GetBatchHistory(GetBatchHistoryRequest $request, $timeout = false)
+    public function getBatchHistory(GetBatchHistoryRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchHistory2", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchHistory2", $timeout, $request->jsonSerialize()));
     }
 }

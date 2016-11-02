@@ -6,57 +6,57 @@ use SlimCD\SlimCD;
 
 class Images extends SlimCD implements \SlimCD\Interfaces\Images
 {
-    public function Images_DownloadSignature(DownloadSignatureRequest $request, $timeout = false)
+    public function downloadSignature(DownloadSignatureRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadSignature", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadSignature", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_DownloadReceipt(DownloadReceiptRequest $request, $timeout = false)
+    public function downloadReceipt(DownloadReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadReceipt", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_DownloadCheck(DownloadCheckRequest $request, $timeout = false)
+    public function downloadCheck(DownloadCheckRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadCheck", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadCheck", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_UploadSignature(UploadSignatureRequest $request, $timeout = false)
+    public function uploadSignature(UploadSignatureRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadSignature", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadSignature", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_UploadReceipt(UploadReceiptRequest $request, $timeout = false)
+    public function uploadReceipt(UploadReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadReceipt", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_UploadCheck(UploadCheckRequest $request, $timeout = false)
+    public function uploadCheck(UploadCheckRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadCheck", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadCheck", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_GetReceipt(GetReceiptRequest $request, $timeout = false)
+    public function getReceipt(GetReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetReceipt", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_SendReceipt(SendReceiptRequest $request, $timeout = false)
+    public function sendReceipt(SendReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=SendReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=SendReceipt", $timeout, $request->jsonSerialize()));
     }
 
-    public function Images_GetSignatureImage(GetSignatureImageRequest $request, $timeout = false)
+    public function getSignatureImage(GetSignatureImageRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=GetSignatureImage", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=GetSignatureImage", $timeout, $request->jsonSerialize()));
     }
 }

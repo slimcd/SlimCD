@@ -13,13 +13,13 @@ use \SlimCD\Images\SendReceiptRequest;
 use \SlimCD\Images\GetSignatureImageRequest;
 
 interface Images {
-    public function Images_DownloadSignature(DownloadSignatureRequest $request, $timeout = false);
-    public function Images_DownloadReceipt(DownloadReceiptRequest $request, $timeout = false);
-    public function Images_DownloadCheck(DownloadCheckRequest $request, $timeout = false);
-    public function Images_UploadSignature(UploadSignatureRequest $request, $timeout = false);
-    public function Images_UploadReceipt(UploadReceiptRequest $request, $timeout = false);
-    public function Images_UploadCheck(UploadCheckRequest $request, $timeout = false);
-    public function Images_GetReceipt(GetReceiptRequest $request, $timeout = false);
-    public function Images_SendReceipt(SendReceiptRequest $request, $timeout = false);
-    public function Images_GetSignatureImage(GetSignatureImageRequest $request, $timeout = false);
+    public function downloadSignature(DownloadSignatureRequest $request, $timeout = false);
+    public function downloadReceipt(DownloadReceiptRequest $request, $timeout = false);
+    public function downloadCheck(DownloadCheckRequest $request, $timeout = false);
+    public function uploadSignature(UploadSignatureRequest $request, $timeout = false);
+    public function uploadReceipt(UploadReceiptRequest $request, $timeout = false);
+    public function uploadCheck(UploadCheckRequest $request, $timeout = false);
+    public function getReceipt(GetReceiptRequest $request, $timeout = false);
+    public function sendReceipt(SendReceiptRequest $request, $timeout = false);
+    public function getSignatureImage(GetSignatureImageRequest $request, $timeout = false);
 }
