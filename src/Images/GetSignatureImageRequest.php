@@ -9,24 +9,24 @@ namespace SlimCD\Images;
 class GetSignatureImageRequest
 {
     // property declaration
-    public $username = '';
-    public $password = '';
-    public $gateid = 0;
-    public $imgflag = 'PNG';
-    public $height = null ;
-    public $width = null ;
+    public $username    = '';
+    public $password    = '';
+    public $gateid      = 0;
+    public $imgflag     = 'PNG';
+    public $height      = null;
+    public $width       = null;
     public $transparent = 'yes';
-    public $edge = null ;
-    public $penwidth = null ;
-    public $border = 'no';
-    public $testmode = 'no';
+    public $edge        = null;
+    public $penwidth    = null;
+    public $border      = 'no';
+    public $testmode    = 'no';
 
     public function jsonSerialize() {
 
         $array = array(
             'username' => $this->username,
             'password' => $this->password,
-            'gateid' => $this->gateid);
+            'gateid'   => $this->gateid);
 
         if($this->imgflag !== null && $this->imgflag !== '') {
             $array['imgflag'] = $this->imgflag;

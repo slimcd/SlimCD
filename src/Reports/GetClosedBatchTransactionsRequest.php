@@ -13,8 +13,8 @@ class GetClosedBatchTransactionsRequest
     // property declaration
     public $username = '';
     public $password = '';
-    public $siteid = 0;
-    public $batchid = 0;
+    public $siteid   = 0;
+    public $batchid  = 0;
 
     use jsonSerializeTrait;
 }

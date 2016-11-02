@@ -14,7 +14,7 @@ class GetUserClientSiteRequest
     public $username = '';
     public $password = '';
     public $clientid = 0;
-    public $siteid = 0;
+    public $siteid   = 0;
 
     use jsonSerializeTrait;
 }

@@ -10,5 +10,5 @@ class MultiSessionRequest
 {
     // property declaration
     public $sessionid = '';
-    public $amount = '';
+    public $amount    = '';
 }

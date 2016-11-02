@@ -11,11 +11,11 @@ use \SlimCD\jsonSerializeTrait;
 class GetBatchHistoryRequest
 {
     // property declaration
-    public $username = '';
-    public $password = '';
-    public $siteid = 0;
+    public $username  = '';
+    public $password  = '';
+    public $siteid    = 0;
     public $startdate = '';
-    public $enddate = '';
+    public $enddate   = '';
 
     use jsonSerializeTrait;
 }

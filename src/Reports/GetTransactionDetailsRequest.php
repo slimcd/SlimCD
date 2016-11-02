@@ -13,7 +13,7 @@ class GetTransactionDetailsRequest
     // property declaration
     public $username = '';
     public $password = '';
-    public $siteid = 0;
+    public $siteid   = 0;
 
     use jsonSerializeTrait;
 }

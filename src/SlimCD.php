@@ -5,7 +5,7 @@ namespace SlimCD;
 /**
  * Class SlimCD
  * @package SlimCD
- * @version 1.0.0
+ * @version 1.0.1
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {
@@ -46,7 +46,8 @@ abstract class SlimCD implements Interfaces\SlimCD
      */
     protected function standardErrorBlock($url, $errortext)
     {
-        $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errortext , 'responseurl' => $url ,'datablock' => '');
+        $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errortext,
+                                'responseurl' => $url,'datablock' => '');
         $result = (object) array('reply' => $reply) ;
 
         return ($result);

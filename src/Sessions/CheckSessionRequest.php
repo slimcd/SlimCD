@@ -9,21 +9,21 @@ namespace SlimCD\Sessions;
 class CheckSessionRequest
 {
     // property declaration
-    public $username = '';
-    public $password = '';
-    public $sessionid = '';
-    public $wait = 0;
+    public $username         = '';
+    public $password         = '';
+    public $sessionid        = '';
+    public $wait             = 0;
     public $waitforcompleted = '';
-    public $userfields = null;
+    public $userfields       = null;
 
     public function jsonSerialize() {
 
         $array = array(
-            'username' => $this->username,
-            'password' => $this->password,
-            'sessionid' => $this->sessionid,
-            'wait' => $this->wait,
-            'waitforcompleted' => $this->waitforcompleted) ;
+            'username'         => $this->username,
+            'password'         => $this->password,
+            'sessionid'        => $this->sessionid,
+            'wait'             => $this->wait,
+            'waitforcompleted' => $this->waitforcompleted);
 
         if (is_array($this->userfields))
         {

@@ -11,16 +11,16 @@ use \SlimCD\jsonSerializeTrait;
 class SendSessionRequest
 {
     // property declaration
-    public $username = '';
-    public $password = '';
-    public $sessionid = 0;
-    public $message = '';
+    public $username   = '';
+    public $password   = '';
+    public $sessionid  = 0;
+    public $message    = '';
     public $send_email = '';
-    public $email = '';
+    public $email      = '';
     public $email_from = '';
-    public $send_html = '';
-    public $send_sms = '';
-    public $phone = 0;
+    public $send_html  = '';
+    public $send_sms   = '';
+    public $phone      = 0;
 
     use jsonSerializeTrait;
 }

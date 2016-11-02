@@ -11,7 +11,7 @@ use \SlimCD\jsonSerializeTrait;
 class SpawnSessionsRequest
 {
     // property declaration
-    public $amount = '';
+    public $amount    = '';
     public $sessionid = '';
 
     use jsonSerializeTrait;
