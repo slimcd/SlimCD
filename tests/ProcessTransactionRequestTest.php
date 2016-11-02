@@ -12,11 +12,11 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
 
     public function testProcessTransactionJsonSerialize()
     {
-        /*$ProcessTransactionRequest = new ProcessTransactionRequest();
-        $this->assertInternalType('array', $ProcessTransactionRequest->jsonSerialize());*/
+        $ProcessTransactionRequest = new ProcessTransactionRequest();
+        $this->assertInternalType('array', $ProcessTransactionRequest->jsonSerialize());
     }
 
-    /*public function testProcessTransaction()
+    public function testProcessTransaction()
     {
         $amount = rand(1, 999);
 
@@ -38,5 +38,5 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
         $transact = new SlimCD\Transact\Transact();
         $reply = $transact->processTransaction($request);
         $this->assertEquals($reply->response, "Success");
-    }*/
+    }
 }

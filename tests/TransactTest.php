@@ -23,4 +23,19 @@ class TransactTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\SlimCD\Transact\ProcessTransactionRequest', $testObject);
         $this->assertInternalType('array', $testObject->jsonSerialize());
     }
+
+    public function testProcessRequest()
+    {
+        $request = new \SlimCD\Transact\ProcessTransactionRequest();
+        $testObject = new \SlimCD\Transact\Transact();
+        $result = $testObject->processTransaction($request);
+        $this->assertInternalType('string', $result->response);
+
+        $testObject->debug = true;
+        $result = $testObject->processTransaction($request, 200);
+        $this->assertInternalType('string', $result->response);
+
+        $result = $testObject->processTransaction($request, 0);
+        $this->assertInternalType('string', $result->response);
+    }
 }

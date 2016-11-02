@@ -1,13 +1,18 @@
 <?php
+
 use SlimCD\Images\Images;
 use SlimCD\Images\DownloadCheckRequest;
 
 class SlimCDTests extends PHPUnit_Framework_Testcase {
 
+    /**
+     * @covers \SlimCD\SlimCD::standardErrorBlock
+     * @covers \SlimCD\SlimCD::httpPost
+     */
     public function testInstantiate()
     {
-        $SlimCD = new Images();
-        $this->assertInstanceOf('SlimCD\Images\Images', $SlimCD);
+        $Images = new Images();
+        $this->assertInstanceOf('SlimCD\Images\Images', $Images);
     }
 
     public function testTrait()
