@@ -18,7 +18,7 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
 
     public function testProcessTransaction()
     {
-        $amount = rand(1,999);
+        $amount = rand(1, 999);
 
         $request = new SlimCD\Transact\ProcessTransactionRequest();
         $request->username = '1032';
@@ -28,7 +28,7 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
         $request->priceid = 74;
         $request->transtype = 'SALE';
         $request->amount = $amount . '.00';
-        $request->cardnumber = '4111111111111111' ;
+        $request->cardnumber = '4111111111111111';
         $request->expmonth = '12';
         $request->expyear = '49';
         $request->product = 'SlimCD Package';
