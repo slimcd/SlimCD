@@ -12,6 +12,6 @@ class CloseBatchRequestTest extends PHPUnit_Framework_TestCase
         $cbr->password = '289075';
         $cbr->siteid = 228226448;
         $result = $slimcd->closeBatch($cbr);
-        var_dump($result);
+        $this->assertInternalType('string', $result->response);
     }
 }

@@ -5,6 +5,7 @@ namespace SlimCD;
 /**
  * Class SlimCD
  * @package SlimCD
+ * @version 0.1.0
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {
