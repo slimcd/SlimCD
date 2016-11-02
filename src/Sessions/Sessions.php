@@ -4,7 +4,7 @@ namespace SlimCD\Sessions;
 
 use SlimCD\SlimCD;
 
-class Sessions extends SlimCD
+class Sessions extends SlimCD implements \SlimCD\Interfaces\Sessions
 {
     public function Sessions_CancelSession(CancelSessionRequest $request, $timeout = false)
     {

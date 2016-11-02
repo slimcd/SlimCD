@@ -4,7 +4,7 @@ namespace SlimCD\Login;
 
 use SlimCD\SlimCD;
 
-class Login extends SlimCD
+class Login extends SlimCD implements \SlimCD\Interfaces\Login
 {
     public function Login_GetUserSettings(GetUserSettingsRequest $request, $timeout = false)
     {

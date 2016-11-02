@@ -4,7 +4,7 @@ namespace SlimCD\Images;
 
 use SlimCD\SlimCD;
 
-class Images extends SlimCD
+class Images extends SlimCD implements \SlimCD\Interfaces\Images
 {
     public function Images_DownloadSignature(DownloadSignatureRequest $request, $timeout = false)
     {

@@ -4,7 +4,7 @@ namespace SlimCD\Transact;
 
 use SlimCD\SlimCD;
 
-class Transact extends SlimCD
+class Transact extends SlimCD implements \SlimCD\Interfaces\Transact
 {
     public function Transact_ProcessTransaction(ProcessTransactionRequest $request, $timeout = false)
     {

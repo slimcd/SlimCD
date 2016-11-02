@@ -7,9 +7,8 @@ namespace SlimCD;
  * @package SlimCD
  * @todo change SlimCD method names
  * @todo add doc blocks
- * @todo create interface
  */
-abstract class SlimCD
+abstract class SlimCD implements Interfaces\SlimCD
 {
     public $transURL = "https://trans.slimcd.com";
     public $statsURL = "https://stats.slimcd.com";
