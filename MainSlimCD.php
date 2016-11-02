@@ -9,7 +9,7 @@
 
 
 // Create a CloseBatch Request class
-//$cbr = new Transact_CloseBatchRequest() ;
+//$cbr = new CloseBatchRequest() ;
 //$cbr->username = '1032';
 //$cbr->password = '289075';
 //$cbr->siteid = 228226448 ;
@@ -18,7 +18,7 @@
 
 
 // Create a GetReceipt Request class
-//$gr = new Images_GetReceiptRequest() ;
+//$gr = new GetReceiptRequest() ;
 //$gr->username = '1032';
 //$gr->password = '289075';
 //$gr->gateid = 78022528 ;
@@ -28,7 +28,7 @@
 
 
 // Create a GetBatchHistory Request class
-//$gbh = new Reports_GetBatchHistoryRequest() ;
+//$gbh = new GetBatchHistoryRequest() ;
 //$gbh->username = 'R6UT8C6M';
 //$gbh->password = '';
 //$gbh->siteid = 0 ;

@@ -1,6 +1,6 @@
 <?php
 use SlimCD\SlimCD;
-use SlimCD\Images\Images_DownloadCheckRequest;
+use SlimCD\Images\DownloadCheckRequest;
 
 class SlimCDTests extends PHPUnit_Framework_Testcase {
 
@@ -12,7 +12,7 @@ class SlimCDTests extends PHPUnit_Framework_Testcase {
 
     public function testTrait()
     {
-        $Images_DownloadCheckRequest = new Images_DownloadCheckRequest();
+        $Images_DownloadCheckRequest = new DownloadCheckRequest();
         $this->assertInternalType('array', $Images_DownloadCheckRequest->jsonSerialize());
     }
 }
