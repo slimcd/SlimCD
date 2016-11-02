@@ -42,7 +42,6 @@ use \SlimCD\Transact\CloseBatchRequest;
 /**
  * Class SlimCD
  * @package SlimCD
- * @todo create a trait for timeout code that is repeated
  * @todo change SlimCD method names
  * @todo add visibility to methods
  * @todo add doc blocks
@@ -55,153 +54,64 @@ class SlimCD
     public $debug = false;
     private $senddata;
     private $recvdata;
+    private $default_timeout = 600;
 
     /* Images Methods */
 
     function Images_DownloadSignature(DownloadSignatureRequest $request, $timeout = false)
     {
-        $default_timeout = 600 ;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadSignature", $timeout, $request->jsonSerialize()));
     }
 
     function Images_DownloadReceipt(DownloadReceiptRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadReceipt", $timeout, $request->jsonSerialize()));
     }
 
     function Images_DownloadCheck(DownloadCheckRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DownloadCheck", $timeout, $request->jsonSerialize()));
     }
 
     function Images_UploadSignature(UploadSignatureRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadSignature",$timeout,$request->jsonSerialize()) );
     }
 
     function Images_UploadReceipt(UploadReceiptRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadReceipt",$timeout,$request->jsonSerialize()) );
     }
 
     function Images_UploadCheck(UploadCheckRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadCheck",$timeout,$request->jsonSerialize()) );
     }
 
     function Images_GetReceipt(GetReceiptRequest $request, $timeout = false)
     {
 
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetReceipt",$timeout,$request->jsonSerialize()) );
     }
 
     function Images_SendReceipt(SendReceiptRequest $request, $timeout = false)
     {
 
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=SendReceipt",$timeout,$request->jsonSerialize()) );
     }
 
     function Images_GetSignatureImage(GetSignatureImageRequest $request, $timeout = false)
     {
 
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=GetSignatureImage",$timeout,$request->jsonSerialize()) );
     }
 
@@ -209,49 +119,19 @@ class SlimCD
 
     function Login_GetUserSettings(GetUserSettingsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserSettings",$timeout,$request->jsonSerialize()) );
     }
 
     function Login_GetUserClients(GetUserClientsRequest $request, $timeout = false)
     {
-        $default_timeout = 600 ;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClients", $timeout, $request->jsonSerialize()));
     }
 
     function Login_GetUserClientSite(GetUserClientSiteRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetUserClientSite",$timeout,$request->jsonSerialize()) );
     }
 
@@ -259,130 +139,49 @@ class SlimCD
 
     function Reports_GetOpenBatch(GetOpenBatchRequest $request, $timeout = false)
     {
-
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenBatch2",$timeout, $request->jsonSerialize()));
     }
 
     function Reports_SearchTransactions(SearchTransactionsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchTransactions2",$timeout,$request->jsonSerialize()) );
     }
 
     function Reports_GetDailySummary(GetDailySummaryRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout = intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetDailySummary", $timeout, $request->jsonSerialize()));
     }
 
     function Reports_GetBatchSummary(GetBatchSummaryRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout = intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchSummary2", $timeout, $request->jsonSerialize()));
     }
 
     function Reports_GetClosedBatchTransactions(GetClosedBatchTransactionsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetClosedBatchTransactions2", $timeout, $request->jsonSerialize()));
     }
 
     function Reports_GetOpenAuths(GetOpenAuthsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout = intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetOpenAuths2", $timeout, $request->jsonSerialize()));
     }
 
     function Reports_GetTransactionDetails(GetTransactionDetailsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetTransactionDetails2",$timeout,$request->jsonSerialize()) );
     }
 
     function Reports_GetBatchHistory(GetBatchHistoryRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetBatchHistory2",$timeout,$request->jsonSerialize()) );
     }
 
@@ -390,81 +189,31 @@ class SlimCD
 
     function Sessions_CancelSession(CancelSessionRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CancelSession", $timeout, $request->jsonSerialize()));
     }
 
     function Sessions_CheckSession(CheckSessionRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CheckSession",$timeout, $request->jsonSerialize()));
     }
 
     function Sessions_CreateSession(CreateSessionRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=CreateSession",$timeout, $request->jsonSerialize()));
     }
 
     function Sessions_DestroySessions(DestroySessionsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=DestroySessions",$timeout, $request->jsonSerialize()));
     }
 
     function Sessions_GetSessionFields(GetSessionFieldsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=GetSessionFields",$timeout, $request->jsonSerialize()));
     }
 
@@ -479,33 +228,13 @@ class SlimCD
 
     function Sessions_SearchSessions(SearchSessionsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SearchSessions",$timeout, $request->jsonSerialize()));
     }
 
     function Sessions_SendSession(SendSessionRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SendSession",$timeout, $request->jsonSerialize()));
     }
 
@@ -516,17 +245,7 @@ class SlimCD
 
     function Sessions_SpawnSessions(SpawnSessionsRequest $request, $timeout = false)
     {
-        $default_timeout = 600;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout=intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ( $this->HttpPost($this->statsURL . "/soft/json/jsonscript.asp?service=SpawnSessions",$timeout, $request->jsonSerialize()));
     }
 
@@ -534,33 +253,13 @@ class SlimCD
 
     function Transact_ProcessTransaction(ProcessTransactionRequest $request, $timeout = false)
     {
-        $default_timeout = 90;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout = intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->transURL . "/soft/json/jsonpayment.asp", $timeout, $request->jsonSerialize()));
     }
 
     function Transact_CloseBatch(CloseBatchRequest $request, $timeout = false)
     {
-        $default_timeout = 600 ;
-
-        if(!$timeout) {
-            $timeout = $default_timeout;
-        } else {
-            $timeout = intval($timeout);
-            if($timeout === 0) {
-                $timeout = $default_timeout;
-            }
-        }
-
+        $timeout = $this->getTimeout($timeout);
         return ($this->HttpPost($this->transURL . "/soft/json/jsonscript.asp?service=CloseBatch", $timeout, $request->jsonSerialize()));
     }
 
@@ -648,5 +347,18 @@ class SlimCD
         $this->recvdata = '';
 
         return $result ;
+    }
+
+    protected function getTimeout($timeout)
+    {
+        if(!$timeout) {
+            $timeout = $this->default_timeout;
+        } else {
+            $timeout = intval($timeout);
+            if($timeout === 0) {
+                $timeout = $this->default_timeout;
+            }
+        }
+        return $timeout;
     }
 }
