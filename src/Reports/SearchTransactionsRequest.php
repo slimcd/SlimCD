@@ -4,6 +4,10 @@ namespace SlimCD\Reports;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class SearchTransactionsRequest
+ * @package SlimCD\Reports
+ */
 class SearchTransactionsRequest
 {
     // property declaration

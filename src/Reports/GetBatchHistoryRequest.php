@@ -4,6 +4,10 @@ namespace SlimCD\Reports;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetBatchHistoryRequest
+ * @package SlimCD\Reports
+ */
 class GetBatchHistoryRequest
 {
     // property declaration

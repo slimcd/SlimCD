@@ -4,6 +4,10 @@ namespace SlimCD\Login;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetUserSettingsRequest
+ * @package SlimCD\Login
+ */
 class GetUserSettingsRequest
 {
     // property declaration

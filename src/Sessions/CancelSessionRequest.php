@@ -4,6 +4,10 @@ namespace SlimCD\Sessions;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class CancelSessionRequest
+ * @package SlimCD\Sessions
+ */
 class CancelSessionRequest
 {
     // property declaration

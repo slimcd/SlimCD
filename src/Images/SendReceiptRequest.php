@@ -2,6 +2,10 @@
 
 namespace SlimCD\Images;
 
+/**
+ * Class SendReceiptRequest
+ * @package SlimCD\Images
+ */
 class SendReceiptRequest
 {
     // property declaration

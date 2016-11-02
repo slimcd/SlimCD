@@ -4,6 +4,10 @@ namespace SlimCD\Images;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetReceiptRequest
+ * @package SlimCD\Images
+ */
 class GetReceiptRequest
 {
     // property declaration

@@ -2,6 +2,10 @@
 
 namespace SlimCD\Sessions;
 
+/**
+ * Class CheckSessionRequest
+ * @package SlimCD\Sessions
+ */
 class CheckSessionRequest
 {
     // property declaration
@@ -20,7 +24,6 @@ class CheckSessionRequest
             'sessionid' => $this->sessionid,
             'wait' => $this->wait,
             'waitforcompleted' => $this->waitforcompleted) ;
-
 
         if (is_array($this->userfields))
         {

@@ -4,6 +4,10 @@ namespace SlimCD\Reports;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetDailySummaryRequest
+ * @package SlimCD\Reports
+ */
 class GetDailySummaryRequest
 {
     // property declaration

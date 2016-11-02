@@ -4,6 +4,10 @@ namespace SlimCD\Reports;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetOpenAuthsRequest
+ * @package SlimCD\Reports
+ */
 class GetOpenAuthsRequest
 {
     // property declaration

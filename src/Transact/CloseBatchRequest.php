@@ -4,6 +4,10 @@ namespace SlimCD\Transact;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class CloseBatchRequest
+ * @package SlimCD\Transact
+ */
 class CloseBatchRequest
 {
     // property declaration

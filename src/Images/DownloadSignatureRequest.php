@@ -4,6 +4,10 @@ namespace SlimCD\Images;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class DownloadSignatureRequest
+ * @package SlimCD\Images
+ */
 class DownloadSignatureRequest
 {
     // property declaration

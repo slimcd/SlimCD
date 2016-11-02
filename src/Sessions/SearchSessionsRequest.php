@@ -4,6 +4,10 @@ namespace SlimCD\Sessions;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class SearchSessionsRequest
+ * @package SlimCD\Sessions
+ */
 class SearchSessionsRequest
 {
     // property declaration

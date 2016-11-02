@@ -4,6 +4,10 @@ namespace SlimCD\Transact;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class ProcessTransactionRequest
+ * @package SlimCD\Transact
+ */
 class ProcessTransactionRequest
 {
     public $username = '' ;

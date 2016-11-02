@@ -2,6 +2,10 @@
 
 namespace SlimCD\Sessions;
 
+/**
+ * Class CreateSessionRequest
+ * @package SlimCD\Sessions
+ */
 class CreateSessionRequest
 {
     // property declaration

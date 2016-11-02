@@ -2,6 +2,10 @@
 
 namespace SlimCD\Images;
 
+/**
+ * Class GetSignatureImageRequest
+ * @package SlimCD\Images
+ */
 class GetSignatureImageRequest
 {
     // property declaration

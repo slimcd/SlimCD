@@ -4,6 +4,10 @@ namespace SlimCD\Sessions;
 
 use \SlimCD\jsonSerializeTrait;
 
+/**
+ * Class GetSessionFieldsRequest
+ * @package SlimCD\Sessions
+ */
 class GetSessionFieldsRequest
 {
     // property declaration

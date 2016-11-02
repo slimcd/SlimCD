@@ -5,17 +5,44 @@ namespace SlimCD;
 /**
  * Class SlimCD
  * @package SlimCD
- * @todo add doc blocks
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {
+    /**
+     * @var string
+     */
     public $transURL = "https://trans.slimcd.com";
+
+    /**
+     * @var string
+     */
     public $statsURL = "https://stats.slimcd.com";
+
+    /**
+     * @var bool
+     */
     public $debug = false;
+
+    /**
+     * @var
+     */
     protected $senddata;
+
+    /**
+     * @var
+     */
     protected $recvdata;
+
+    /**
+     * @var int
+     */
     protected $default_timeout = 600;
 
+    /**
+     * @param $url
+     * @param $errortext
+     * @return object
+     */
     protected function standardErrorBlock($url, $errortext)
     {
         $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errortext , 'responseurl' => $url ,'datablock' => '');
@@ -24,6 +51,12 @@ abstract class SlimCD implements Interfaces\SlimCD
         return ($result);
     }
 
+    /**
+     * @param $urlString
+     * @param $timeout
+     * @param $namevalueArray
+     * @return mixed|object
+     */
     protected function httpPost($urlString, $timeout, $namevalueArray)
     {
         $ch = curl_init($urlString);
@@ -102,6 +135,10 @@ abstract class SlimCD implements Interfaces\SlimCD
         return $result ;
     }
 
+    /**
+     * @param $timeout
+     * @return int
+     */
     protected function getTimeout($timeout)
     {
         if(!$timeout) {
