@@ -6,7 +6,7 @@ before_script:
 # Install git, the php image doesn't have installed
 - apt-get update -yqq
 - apt-get install git -yqq
-- apt-get install php5-xdebug -yqq
+- apt-get install php-xdebug -yqq
 # Install composer
 - curl -sS https://getcomposer.org/installer | php
 # Install all project dependencies
