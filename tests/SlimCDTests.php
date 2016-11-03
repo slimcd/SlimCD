@@ -6,7 +6,7 @@ use SlimCD\Images\DownloadCheckRequest;
 class SlimCDTests extends PHPUnit_Framework_Testcase {
 
     /**
-     * @covers \SlimCD\SlimCD::errorBlock
+     * @covers \SlimCD\SlimCD::buildError
      * @covers \SlimCD\SlimCD::httpPost
      */
     public function testInstantiate()

@@ -47,7 +47,7 @@ abstract class SlimCD implements Interfaces\SlimCD
      * @param $errorMessage
      * @return object
      */
-    protected function errorBlock($url, $errorMessage)
+    protected function buildError($url, $errorMessage)
     {
         $reply = (object) array(
             'response'     => 'Error',
@@ -91,7 +91,7 @@ abstract class SlimCD implements Interfaces\SlimCD
         $this->receive = curl_exec($curlHandler);
 
         if(curl_errno($curlHandler)) {
-            $this->errorBlock(
+            $this->buildError(
                 curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL),
                 curl_error($curlHandler)
             );
@@ -103,7 +103,7 @@ abstract class SlimCD implements Interfaces\SlimCD
 
             if (intval($httpStatus) !== 200 || ($contentType !== 'application/json'
                     && $contentType !== 'text/javascript')) {
-                $result =  $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive) ;
+                $result =  $this->buildError(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive) ;
             } else {
                 $result = json_decode($this->receive);
             }
@@ -133,7 +133,7 @@ abstract class SlimCD implements Interfaces\SlimCD
                         $errorMessage = ' - Unknown JSON error';
                         break;
                 }
-                $result = $this->errorBlock($urlString, $errorMessage);
+                $result = $this->buildError($urlString, $errorMessage);
             }
         }
 
