@@ -20,4 +20,26 @@ class SlimCDTests extends PHPUnit_Framework_Testcase {
         $Images_DownloadCheckRequest = new DownloadCheckRequest();
         $this->assertInternalType('array', $Images_DownloadCheckRequest->jsonSerialize());
     }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Curl Error
+     */
+    public function testProtectedMethods()
+    {
+        $httpPost = self::getMethod('httpPost');
+        $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
+        $httpPost->invokeArgs($obj, array(
+            "localhost",
+            0,
+            []
+        ));
+    }
+
+    protected static function getMethod($name) {
+        $class = new ReflectionClass('\SlimCD\SlimCD');
+        $method = $class->getMethod($name);
+        $method->setAccessible(true);
+        return $method;
+    }
 }

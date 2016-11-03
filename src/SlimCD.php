@@ -91,11 +91,11 @@ abstract class SlimCD implements Interfaces\SlimCD
         $this->receive = curl_exec($curlHandler);
 
         if(curl_errno($curlHandler)) {
-            $result = $this->errorBlock(
+            $this->errorBlock(
                 curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL),
                 curl_error($curlHandler)
             );
-            throw new \Exception($result);
+            throw new \Exception('Curl Error');
         } else {
 
             $httpStatus = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
