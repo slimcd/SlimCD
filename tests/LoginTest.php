@@ -15,6 +15,9 @@ class LoginTest extends PHPUnit_Framework_TestCase
         $testObject = new \SlimCD\Login\GetUserClientSiteRequest();
         $this->assertInstanceOf('\SlimCD\Login\GetUserClientSiteRequest', $testObject);
         $this->assertInternalType('array', $testObject->jsonSerialize());
+        $login = new Login();
+        $result = $login->getUserClientSite($testObject);
+        $this->assertInternalType('string', $result->response);
     }
 
     public function testGetUserClientsRequest()
@@ -22,6 +25,9 @@ class LoginTest extends PHPUnit_Framework_TestCase
         $testObject = new \SlimCD\Login\GetUserClientsRequest();
         $this->assertInstanceOf('\SlimCD\Login\GetUserClientsRequest', $testObject);
         $this->assertInternalType('array', $testObject->jsonSerialize());
+        $login = new Login();
+        $result = $login->getUserClients($testObject);
+        $this->assertInternalType('string', $result->response);
     }
 
     public function testGetUserSettingsRequest()
@@ -29,5 +35,8 @@ class LoginTest extends PHPUnit_Framework_TestCase
         $testObject = new \SlimCD\Login\GetUserSettingsRequest();
         $this->assertInstanceOf('\SlimCD\Login\GetUserSettingsRequest', $testObject);
         $this->assertInternalType('array', $testObject->jsonSerialize());
+        $login = new Login();
+        $result = $login->getUserSettings($testObject);
+        $this->assertInternalType('string', $result->response);
     }
 }

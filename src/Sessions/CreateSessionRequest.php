@@ -34,9 +34,9 @@ class CreateSessionRequest
         if (is_array($this->userfields))
         {
             foreach ($this->userfields as $key => $value) {
-                $array[$key] = $value ;
+                $array[$key] = $value;
             }
         }
-        return ($array) ;
+        return ($array);
     }
 }
