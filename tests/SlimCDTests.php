@@ -25,7 +25,7 @@ class SlimCDTests extends PHPUnit_Framework_Testcase {
      * @expectedException Exception
      * @expectedExceptionMessage Curl Error
      */
-    public function testProtectedMethods()
+    public function testHttpPost()
     {
         $httpPost = self::getMethod('httpPost');
         $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
@@ -34,6 +34,17 @@ class SlimCDTests extends PHPUnit_Framework_Testcase {
             0,
             []
         ));
+    }
+
+    public function testErrorBlock()
+    {
+        $errorBlock = self::getMethod('errorBlock');
+        $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
+        $errorMessage = $errorBlock->invokeArgs($obj, array(
+           "localhost",
+            "Error"
+        ));
+        $this->assertEquals('Error', $errorMessage->reply->response);
     }
 
     protected static function getMethod($name) {
