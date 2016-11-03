@@ -69,36 +69,36 @@ abstract class SlimCD implements Interfaces\SlimCD
      */
     protected function httpPost($urlString, $timeout, $nameValueArray)
     {
-        $ch = curl_init($urlString);
+        $curlHandler = curl_init($urlString);
 
-        curl_setopt($ch,CURLOPT_TIMEOUT, $timeout);
-        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($curlHandler,CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($curlHandler, CURLOPT_POST, 1);
 
         $this->send = http_build_query($nameValueArray) ;
 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->send);
+        curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $this->send);
 
         // SLIMCD.COM uses a GODADDY SSL certificate.  Once you install the CA for GoDaddy SSL, please
         // remove the line below.
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curlHandler, CURLOPT_SSL_VERIFYPEER, 0);
 
         // receive server response ...
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+        curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandler, CURLOPT_FOLLOWLOCATION, 0);
 
         // POST the data
-        $this->receive = curl_exec($ch);
+        $this->receive = curl_exec($curlHandler);
 
-        if(curl_errno($ch)) {
-            $result = $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
+        if(curl_errno($curlHandler)) {
+            $result = $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), curl_error($curlHandler));
         } else {
 
-            $httpstatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+            $httpstatus = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
+            $contentType = curl_getinfo($curlHandler, CURLINFO_CONTENT_TYPE);
 
             if (intval($httpstatus) !== 200 || ($contentType !== 'application/json'
                     && $contentType !== 'text/javascript')) {
-                $result =  $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->receive) ;
+                $result =  $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive) ;
             } else {
                 $result = json_decode($this->receive);
             }
@@ -132,7 +132,7 @@ abstract class SlimCD implements Interfaces\SlimCD
             }
         }
 
-        curl_close ($ch);
+        curl_close ($curlHandler);
 
         // flatten out the "reply" so we don't have that extra (unneeded) level
         $replyResult = get_object_vars($result->reply);
