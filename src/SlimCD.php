@@ -91,6 +91,7 @@ abstract class SlimCD implements Interfaces\SlimCD
 
         if(curl_errno($curlHandler)) {
             $result = $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), curl_error($curlHandler));
+            throw new \Exception($result);
         } else {
 
             $httpstatus = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
