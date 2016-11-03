@@ -12,7 +12,7 @@ abstract class SlimCD implements Interfaces\SlimCD
     /**
      * @var string
      */
-    public $transURL = "https://trans.slimcd.com";
+    public $transactionUrl = "https://trans.slimcd.com";
 
     /**
      * @var string

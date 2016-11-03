@@ -52,7 +52,7 @@ class Images extends SlimCD implements \SlimCD\Interfaces\Images
     public function uploadSignature(UploadSignatureRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadSignature", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transactionUrl . "/soft/json/jsonscript.asp?service=UploadSignature", $timeout, $request->jsonSerialize()));
     }
 
     /**
@@ -63,7 +63,7 @@ class Images extends SlimCD implements \SlimCD\Interfaces\Images
     public function uploadReceipt(UploadReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transactionUrl . "/soft/json/jsonscript.asp?service=UploadReceipt", $timeout, $request->jsonSerialize()));
     }
 
     /**
@@ -74,7 +74,7 @@ class Images extends SlimCD implements \SlimCD\Interfaces\Images
     public function uploadCheck(UploadCheckRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=UploadCheck", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transactionUrl . "/soft/json/jsonscript.asp?service=UploadCheck", $timeout, $request->jsonSerialize()));
     }
 
     /**
@@ -96,7 +96,7 @@ class Images extends SlimCD implements \SlimCD\Interfaces\Images
     public function sendReceipt(SendReceiptRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=SendReceipt", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transactionUrl . "/soft/json/jsonscript.asp?service=SendReceipt", $timeout, $request->jsonSerialize()));
     }
 
     /**
@@ -107,6 +107,6 @@ class Images extends SlimCD implements \SlimCD\Interfaces\Images
     public function getSignatureImage(GetSignatureImageRequest $request, $timeout = false)
     {
         $timeout = $this->getTimeout($timeout);
-        return ($this->httpPost($this->transURL . "/soft/json/jsonscript.asp?service=GetSignatureImage", $timeout, $request->jsonSerialize()));
+        return ($this->httpPost($this->transactionUrl . "/soft/json/jsonscript.asp?service=GetSignatureImage", $timeout, $request->jsonSerialize()));
     }
 }
