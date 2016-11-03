@@ -66,6 +66,7 @@ abstract class SlimCD implements Interfaces\SlimCD
      * @param $timeout
      * @param $nameValueArray
      * @return mixed|object
+     * @throws \Exception
      */
     protected function httpPost($urlString, $timeout, $nameValueArray)
     {
@@ -90,7 +91,10 @@ abstract class SlimCD implements Interfaces\SlimCD
         $this->receive = curl_exec($curlHandler);
 
         if(curl_errno($curlHandler)) {
-            $result = $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), curl_error($curlHandler));
+            $result = $this->errorBlock(
+                curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL),
+                curl_error($curlHandler)
+            );
             throw new \Exception($result);
         } else {
 
