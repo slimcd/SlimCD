@@ -89,7 +89,7 @@ abstract class SlimCD implements Interfaces\SlimCD
 
         // POST the data
         $this->receive = curl_exec($curlHandler);
-
+        // @codeCoverageIgnoreStart
         if(curl_errno($curlHandler)) {
             $this->buildError(
                 curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL),
@@ -103,7 +103,7 @@ abstract class SlimCD implements Interfaces\SlimCD
 
             if (intval($httpStatus) !== 200 || ($contentType !== 'application/json'
                     && $contentType !== 'text/javascript')) {
-                $result =  $this->buildError(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive) ;
+                $result =  $this->buildError(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive);
             } else {
                 $result = json_decode($this->receive);
             }
@@ -136,6 +136,7 @@ abstract class SlimCD implements Interfaces\SlimCD
                 $result = $this->buildError($urlString, $errorMessage);
             }
         }
+        // @codeCoverageIgnoreEnd
 
         curl_close ($curlHandler);
 
