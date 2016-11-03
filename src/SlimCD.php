@@ -94,10 +94,10 @@ abstract class SlimCD implements Interfaces\SlimCD
             throw new \Exception($result);
         } else {
 
-            $httpstatus = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
+            $httpStatus = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
             $contentType = curl_getinfo($curlHandler, CURLINFO_CONTENT_TYPE);
 
-            if (intval($httpstatus) !== 200 || ($contentType !== 'application/json'
+            if (intval($httpStatus) !== 200 || ($contentType !== 'application/json'
                     && $contentType !== 'text/javascript')) {
                 $result =  $this->errorBlock(curl_getinfo($curlHandler, CURLINFO_EFFECTIVE_URL), $this->receive) ;
             } else {
