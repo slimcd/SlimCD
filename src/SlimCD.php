@@ -25,28 +25,31 @@ abstract class SlimCD implements Interfaces\SlimCD
     public $debug = false;
 
     /**
+     * Data to send
      * @var
      */
-    protected $senddata;
+    protected $send;
 
     /**
+     * Data that is received
      * @var
      */
-    protected $recvdata;
+    protected $receive;
 
     /**
+     * Curl timeout
      * @var int
      */
-    protected $default_timeout = 600;
+    protected $defaultTimeout = 600;
 
     /**
      * @param $url
-     * @param $errortext
+     * @param $errorMessage
      * @return object
      */
-    protected function standardErrorBlock($url, $errortext)
+    protected function errorBlock($url, $errorMessage)
     {
-        $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errortext,
+        $reply = (object) array('response' => 'Error', 'responsecode' => '2', 'description' => $errorMessage,
                                 'responseurl' => $url,'datablock' => '');
         $result = (object) array('reply' => $reply) ;
 
@@ -56,19 +59,19 @@ abstract class SlimCD implements Interfaces\SlimCD
     /**
      * @param $urlString
      * @param $timeout
-     * @param $namevalueArray
+     * @param $nameValueArray
      * @return mixed|object
      */
-    protected function httpPost($urlString, $timeout, $namevalueArray)
+    protected function httpPost($urlString, $timeout, $nameValueArray)
     {
         $ch = curl_init($urlString);
 
         curl_setopt($ch,CURLOPT_TIMEOUT, $timeout) ;
         curl_setopt($ch, CURLOPT_POST, 1);
 
-        $this->senddata = http_build_query($namevalueArray) ;
+        $this->send = http_build_query($nameValueArray) ;
 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->senddata);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->send);
 
         // SLIMCD.COM uses a GODADDY SSL certificate.  Once you install the CA for GoDaddy SSL, please remove the line below.
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -78,19 +81,19 @@ abstract class SlimCD implements Interfaces\SlimCD
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
 
         // POST the data
-        $this->recvdata = curl_exec($ch);
+        $this->receive = curl_exec($ch);
 
         if(curl_errno($ch)) {
-            $result = $this->standardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
+            $result = $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
         } else {
 
             $httpstatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
             if (intval($httpstatus) !== 200 || ($contentType !== 'application/json' && $contentType !== 'text/javascript')) {
-                $result =  $this->standardErrorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->recvdata) ;
+                $result =  $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->receive) ;
             } else {
-                $result = json_decode($this->recvdata);
+                $result = json_decode($this->receive);
             }
 
             // Make sure we can decode the results...
@@ -118,7 +121,7 @@ abstract class SlimCD implements Interfaces\SlimCD
                         $errortext = ' - Unknown JSON error';
                         break;
                 }
-                $result = $this->standardErrorBlock($urlString, $errortext);
+                $result = $this->errorBlock($urlString, $errortext);
             }
         }
 
@@ -127,12 +130,12 @@ abstract class SlimCD implements Interfaces\SlimCD
         // flatten out the "reply" so we don't have that extra (unneeded) level
         $myarray = get_object_vars($result->reply);
         if($this->debug) {
-            $myarray = array_merge($myarray, array("senddata" => $this->senddata , "recvdata" => $this->recvdata));
+            $myarray = array_merge($myarray, array("senddata" => $this->send , "recvdata" => $this->receive));
         }
         $result = (object) $myarray;
 
-        $this->senddata = '';
-        $this->recvdata = '';
+        $this->send = '';
+        $this->receive = '';
 
         return $result ;
     }
@@ -144,11 +147,11 @@ abstract class SlimCD implements Interfaces\SlimCD
     protected function getTimeout($timeout)
     {
         if(!$timeout) {
-            $timeout = $this->default_timeout;
+            $timeout = $this->defaultTimeout;
         } else {
             $timeout = intval($timeout);
             if($timeout === 0) {
-                $timeout = $this->default_timeout;
+                $timeout = $this->defaultTimeout;
             }
         }
         return $timeout;
