@@ -9,3 +9,5 @@ For use with [SlimCD](https://stats.slimcd.com/). [Developer Signup](https://sta
 * [Login](docs/Login.md)
 * [Reports](docs/Reports.md)
 * [Sessions](docs/Sessions.md)
+
+![Code Coverage 100%](code-coverage.png)
