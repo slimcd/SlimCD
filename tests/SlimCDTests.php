@@ -36,9 +36,9 @@ class SlimCDTests extends PHPUnit_Framework_Testcase {
         ));
     }
 
-    public function testErrorBlock()
+    public function testBuildError()
     {
-        $errorBlock = self::getMethod('errorBlock');
+        $errorBlock = self::getMethod('buildError');
         $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
         $errorMessage = $errorBlock->invokeArgs($obj, array(
            "localhost",
