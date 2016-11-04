@@ -18,9 +18,11 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
 
     public function testProcessTransaction()
     {
+        $request = new SlimCD\Transact\ProcessTransactionRequest();
+        $transact = new SlimCD\Transact\Transact();
+
         $amount = rand(1, 999);
 
-        $request = new SlimCD\Transact\ProcessTransactionRequest();
         $request->username = '1032';
         $request->password = '289075';
         $request->clientid = '1032';
@@ -32,10 +34,9 @@ class ProcessTransactionRequestTest extends PHPUnit_Framework_TestCase
         $request->expmonth = '12';
         $request->expyear = '49';
         $request->product = 'SlimCD Package';
-        $request->ver = '0.1.0';
+        $request->ver = $transact->getVersion();
         $request->key = 'SVD-072-5QQ6-5K58';
 
-        $transact = new SlimCD\Transact\Transact();
         $reply = $transact->processTransaction($request);
         $this->assertEquals($reply->response, "Success");
     }

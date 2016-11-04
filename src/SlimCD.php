@@ -11,6 +11,8 @@ use GuzzleHttp\Client;
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {
+    private $version = '1.1.0';
+
     /**
      * @var string
      */
@@ -128,5 +130,13 @@ abstract class SlimCD implements Interfaces\SlimCD
             $timeout = intval($timeout);
         }
         return $timeout;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }
