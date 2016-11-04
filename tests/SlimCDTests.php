@@ -1,56 +1,14 @@
 <?php
 
-use SlimCD\Images\Images;
-use SlimCD\Images\DownloadCheckRequest;
+use SlimCD\Transact\Transact;
 
-class SlimCDTests extends PHPUnit_Framework_Testcase {
-
-    /**
-     * @covers \SlimCD\SlimCD::buildError
-     * @covers \SlimCD\SlimCD::httpPost
-     */
-    public function testInstantiate()
+class SlimCDTests extends PHPUnit_Framework_TestCase
+{
+    public function testingGuzzle()
     {
-        $Images = new Images();
-        $this->assertInstanceOf('SlimCD\Images\Images', $Images);
-    }
-
-    public function testTrait()
-    {
-        $Images_DownloadCheckRequest = new DownloadCheckRequest();
-        $this->assertInternalType('array', $Images_DownloadCheckRequest->jsonSerialize());
-    }
-
-    /**
-     * @expectedException Exception
-     * @expectedExceptionMessage Curl Error
-     */
-    public function testHttpPost()
-    {
-        $httpPost = self::getMethod('httpPost');
-        $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
-        $httpPost->invokeArgs($obj, array(
-            "localhost",
-            0,
-            []
-        ));
-    }
-
-    public function testBuildError()
-    {
-        $errorBlock = self::getMethod('buildError');
-        $obj = $this->getMockForAbstractClass('\SlimCD\SlimCD');
-        $errorMessage = $errorBlock->invokeArgs($obj, array(
-           "localhost",
-            "Error"
-        ));
-        $this->assertEquals('Error', $errorMessage->reply->response);
-    }
-
-    protected static function getMethod($name) {
-        $class = new ReflectionClass('\SlimCD\SlimCD');
-        $method = $class->getMethod($name);
-        $method->setAccessible(true);
-        return $method;
+        $transact = new Transact();
+        $ProcessTransactionRequest = new \SlimCD\Transact\ProcessTransactionRequest();
+        $reply = $transact->processTransaction($ProcessTransactionRequest);
+        $this->assertInternalType('string', $reply->response);
     }
 }
