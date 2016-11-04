@@ -74,22 +74,39 @@ abstract class SlimCD implements Interfaces\SlimCD
      */
     protected function httpPost($urlString, $timeout, $nameValueArray)
     {
+        // get the timeout passed
+        $timeout = $this->getTimeout($timeout);
+
+        // create a new Guzzle object and pass timeout to the construct
         $client = new Client(['timeout' => $timeout]);
+
+        // send a post request to the url with the name value array
         $response = $client->request('POST', $urlString, [
             'query' => $nameValueArray
         ]);
+
+        // status codes are good to know and we want it to be 200
         $code = $response->getStatusCode();
+
+        // we should also check the content type as it should always return json
         $contentType = $response->getHeader('Content-Type')[0];
 
+        // check the status code and the content type
         if($code !== 200 || ($contentType !== 'application/json' && $contentType !== 'text/javascript')) {
-            throw new \Exception("Not okay");
+            // @todo add more verbose exception
+            throw new \Exception("Not okay"); // if something is wrong throw an exception
         } else {
+            // get the body of the response
             $jsonBody = $response->getBody();
+
+            // decode the json into an object
             $result = json_decode($jsonBody);
         }
 
+        // NULL is returned if the json cannot be decoded
         if($result === null) {
             switch (json_last_error()) {
+                // this case will probably never happen
                 case JSON_ERROR_NONE:
                     $errorMessage= ' - No errors';
                     break;
@@ -112,9 +129,11 @@ abstract class SlimCD implements Interfaces\SlimCD
                     $errorMessage = ' - Unknown JSON error';
                     break;
             }
+            // @todo test different exceptions
             throw new \Exception("Json Error " . $errorMessage);
         }
 
+        // return the reply same as version 1.0.x
         return $result->reply;
     }
 
