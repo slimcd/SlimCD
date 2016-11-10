@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
  * Class SlimCD
  * @package SlimCD
  * @version 1.1.0
+ * @author Levi Durfee <ldurfee@bulldogcreative.com>
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {

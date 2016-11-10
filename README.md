@@ -10,4 +10,12 @@ For use with [SlimCD](https://stats.slimcd.com/). [Developer Signup](https://sta
 * [Reports](docs/Reports.md)
 * [Sessions](docs/Sessions.md)
 
-![Code Coverage 100%](code-coverage.png)
+*Need to finish the examples.*
+
+## Code Coverage
+
+![Code Coverage 100%](https://bulldogcdn.com/b/code-coverage.png)
+
+## Author
+
+Levi Durfee - [Bulldog Creative Services](https://www.bulldogcreative.com/)
