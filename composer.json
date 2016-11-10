@@ -1,12 +1,15 @@
 {
-  "name": "SlimCD/SlimCD",
+  "name": "BulldogCreativeServices/SlimCD",
+  "type": "library",
   "description": "SlimCD",
   "license": "MIT",
   "keywords": ["SlimCD", "payment", "gateway"],
   "authors": [
     {
       "name": "Levi Durfee",
-      "email": "ldurfee@bulldogcreative.com"
+      "email": "ldurfee@bulldogcreative.com",
+      "homepage": "https://www.bulldogcreative.com/",
+      "role": "Interactive Director"
     }
   ],
   "require": {
