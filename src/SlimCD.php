@@ -53,6 +53,7 @@ abstract class SlimCD implements Interfaces\SlimCD
      */
     protected function buildError($url, $errorMessage)
     {
+        // @codeCoverageIgnoreStart
         $reply = (object) array(
             'response'     => 'Error',
             'responsecode' => '2',
@@ -63,6 +64,7 @@ abstract class SlimCD implements Interfaces\SlimCD
         $result = (object) array('reply' => $reply);
 
         return ($result);
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -95,7 +97,9 @@ abstract class SlimCD implements Interfaces\SlimCD
         // check the status code and the content type
         if($code !== 200 || ($contentType !== 'application/json' && $contentType !== 'text/javascript')) {
             // @todo add more verbose exception
+            // @codeCoverageIgnoreStart
             throw new \Exception("Not okay"); // if something is wrong throw an exception
+            // @codeCoverageIgnoreEnd
         } else {
             // get the body of the response
             $jsonBody = $response->getBody();
@@ -104,6 +108,7 @@ abstract class SlimCD implements Interfaces\SlimCD
             $result = json_decode($jsonBody);
         }
 
+        // @codeCoverageIgnoreStart
         // NULL is returned if the json cannot be decoded
         if($result === null) {
             switch (json_last_error()) {
@@ -133,6 +138,7 @@ abstract class SlimCD implements Interfaces\SlimCD
             // @todo test different exceptions
             throw new \Exception("Json Error " . $errorMessage);
         }
+        // @codeCoverageIgnoreEnd
 
         // return the reply same as version 1.0.x
         return $result->reply;
