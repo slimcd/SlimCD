@@ -82,7 +82,8 @@ abstract class SlimCD implements Interfaces\SlimCD
 
         // send a post request to the url with the name value array
         $response = $client->request('POST', $urlString, [
-            'query' => $nameValueArray
+            'query' => $nameValueArray,
+            'verify' => getcwd() . '\\gd_bundle-g2.crt'
         ]);
 
         // status codes are good to know and we want it to be 200
