@@ -1,6 +1,6 @@
 # SlimCD
 
-For use with [SlimCD](https://stats.slimcd.com/). [Developer Signup](https://stats.slimcd.com/developer_signup.aspx).
+For use with [SlimCD](https://stats.slimcd.com/) payment gateway.
 
 [![Build Status](https://travis-ci.org/BulldogCreative/SlimCD.svg?branch=master)](https://travis-ci.org/BulldogCreative/SlimCD)
 
@@ -17,15 +17,15 @@ composer require bulldog-creative/slimcd
 ```json
 {
     "require": {
-        "composer require bulldog-creative/slimcd": "1.1.*"
+        "bulldog-creative/slimcd": "1.1.*"
     }
 }
 ```
 
 ### Download it directly
 
-[zip v1.1.0](https://github.com/BulldogCreative/SlimCD/archive/v1.1.0.zip)
-[tar.gz v1.1.0](https://github.com/BulldogCreative/SlimCD/archive/v1.1.0.tar.gz)
+* [v1.1.0 zip](https://github.com/BulldogCreative/SlimCD/archive/v1.1.0.zip)
+* [v1.1.0 tar.gz](https://github.com/BulldogCreative/SlimCD/archive/v1.1.0.tar.gz)
 
 ## Examples
 
