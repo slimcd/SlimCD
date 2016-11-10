@@ -2,6 +2,8 @@
 
 For use with [SlimCD](https://stats.slimcd.com/). [Developer Signup](https://stats.slimcd.com/developer_signup.aspx).
 
+[![Build Status](https://travis-ci.org/BulldogCreative/SlimCD.svg?branch=master)](https://travis-ci.org/BulldogCreative/SlimCD)
+
 ## Installation
 
 ### Command line using composer
