@@ -1,7 +1,8 @@
 {
-  "name": "BulldogCreativeServices/SlimCD",
+  "name": "Bulldog-Creative-Services/SlimCD",
   "type": "library",
   "description": "SlimCD",
+  "version": "1.1.0",
   "license": "MIT",
   "keywords": ["SlimCD", "payment", "gateway"],
   "authors": [
