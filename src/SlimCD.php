@@ -91,13 +91,13 @@ abstract class SlimCD implements Interfaces\SlimCD
         // POST the data
         $this->receive = curl_exec($ch);
         if(curl_errno($ch)) {
-            $result = $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
+            $result = $this->buildError(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
         } else {
             $httpstatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
             if (intval($httpstatus) !== 200 || ($contentType !== 'application/json'
                     && $contentType !== 'text/javascript')) {
-                $result =  $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->receive) ;
+                $result =  $this->buildError(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->receive) ;
             } else {
                 $result = json_decode($this->receive);
             }
