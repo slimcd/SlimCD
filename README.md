@@ -35,8 +35,6 @@ composer require bulldog-creative/slimcd
 * [Reports](docs/Reports.md)
 * [Sessions](docs/Sessions.md)
 
-*Need to finish the examples.*
-
 ## Code Coverage
 
 ![Code Coverage 100%](https://bulldogcdn.com/b/code-coverage.png)
