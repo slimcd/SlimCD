@@ -85,8 +85,12 @@ abstract class SlimCD implements Interfaces\SlimCD
 
         // send a post request to the url with the name value array
         $response = $client->request('POST', $urlString, [
+            'curl' => [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => 0
+            ],
             'query' => $nameValueArray,
-            'verify' => getcwd() . DIRECTORY_SEPARATOR . 'gd_bundle-g2.crt'
+            'verify' => getcwd() . DIRECTORY_SEPARATOR . 'gd_bundle-g2.crt',
         ]);
 
         // status codes are good to know and we want it to be 200
