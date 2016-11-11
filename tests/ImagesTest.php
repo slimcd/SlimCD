@@ -13,11 +13,15 @@ class ImagesTest extends PHPUnit_Framework_TestCase
     public function testDownloadCheckRequest()
     {
         $testObject = new \SlimCD\Images\DownloadCheckRequest();
+        $testObject->username = 1032;
+        $testObject->password = 289075;
+        $testObject->gateid   = 78022528;
         $this->assertInstanceOf('\SlimCD\Images\DownloadCheckRequest', $testObject);
         $this->assertInternalType('array', $testObject->jsonSerialize());
         $images = new \SlimCD\Images\Images();
         $result = $images->downloadCheck($testObject);
         $this->assertInternalType('string', $result->response);
+        $this->assertEquals('Success', $result->response);
     }
 
     public function testDownloadReceiptRequest()
