@@ -77,76 +77,70 @@ abstract class SlimCD implements Interfaces\SlimCD
      */
     protected function httpPost($urlString, $timeout, $nameValueArray)
     {
-        // get the timeout passed
-        $timeout = $this->getTimeout($timeout);
-
-        // create a new Guzzle object and pass timeout to the construct
-        $client = new Client(['timeout' => $timeout]);
-
-        // send a post request to the url with the name value array
-        $response = $client->request('POST', $urlString, [
-            'curl' => [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_FOLLOWLOCATION => 0
-            ],
-            'query' => $nameValueArray,
-            'verify' => getcwd() . DIRECTORY_SEPARATOR . 'gd_bundle-g2.crt',
-        ]);
-
-        // status codes are good to know and we want it to be 200
-        $code = $response->getStatusCode();
-
-        // we should also check the content type as it should always return json
-        $contentType = $response->getHeader('Content-Type')[0];
-
-        // check the status code and the content type
-        if($code !== 200 || ($contentType !== 'application/json' && $contentType !== 'text/javascript')) {
-            // @todo add more verbose exception
-            // @codeCoverageIgnoreStart
-            throw new \Exception("Not okay"); // if something is wrong throw an exception
-            // @codeCoverageIgnoreEnd
+        $ch = curl_init($urlString);
+        curl_setopt($ch,CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        $this->send = http_build_query($nameValueArray) ;
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->send);
+        // SLIMCD.COM uses a GODADDY SSL certificate.  Once you install the CA for GoDaddy SSL, please
+        // remove the line below.
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        // receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+        // POST the data
+        $this->receive = curl_exec($ch);
+        if(curl_errno($ch)) {
+            $result = $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), curl_error($ch));
         } else {
-            // get the body of the response
-            $jsonBody = $response->getBody();
-
-            // decode the json into an object
-            $result = json_decode($jsonBody);
-        }
-
-        // @codeCoverageIgnoreStart
-        // NULL is returned if the json cannot be decoded
-        if($result === null) {
-            switch (json_last_error()) {
-                // this case will probably never happen
-                case JSON_ERROR_NONE:
-                    $errorMessage= ' - No errors';
-                    break;
-                case JSON_ERROR_DEPTH:
-                    $errorMessage = ' - Maximum stack depth exceeded';
-                    break;
-                case JSON_ERROR_STATE_MISMATCH:
-                    $errorMessage = ' - Underflow or the modes mismatch';
-                    break;
-                case JSON_ERROR_CTRL_CHAR:
-                    $errorMessage = ' - Unexpected control character found';
-                    break;
-                case JSON_ERROR_SYNTAX:
-                    $errorMessage= ' - Syntax error, malformed JSON';
-                    break;
-                case JSON_ERROR_UTF8:
-                    $errorMessage = ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-                    break;
-                default:
-                    $errorMessage = ' - Unknown JSON error';
-                    break;
+            $httpstatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+            if (intval($httpstatus) !== 200 || ($contentType !== 'application/json'
+                    && $contentType !== 'text/javascript')) {
+                $result =  $this->errorBlock(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL), $this->receive) ;
+            } else {
+                $result = json_decode($this->receive);
             }
-            // @todo test different exceptions
-            throw new \Exception("Json Error " . $errorMessage);
+            // Make sure we can decode the results...
+            if($result === null) {
+                switch (json_last_error()) {
+                    case JSON_ERROR_NONE:
+                        $errorMessage= ' - No errors';
+                        break;
+                    case JSON_ERROR_DEPTH:
+                        $errorMessage = ' - Maximum stack depth exceeded';
+                        break;
+                    case JSON_ERROR_STATE_MISMATCH:
+                        $errorMessage = ' - Underflow or the modes mismatch';
+                        break;
+                    case JSON_ERROR_CTRL_CHAR:
+                        $errorMessage = ' - Unexpected control character found';
+                        break;
+                    case JSON_ERROR_SYNTAX:
+                        $errorMessage= ' - Syntax error, malformed JSON';
+                        break;
+                    case JSON_ERROR_UTF8:
+                        $errorMessage = ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+                        break;
+                    default:
+                        $errorMessage = ' - Unknown JSON error';
+                        break;
+                }
+                $result = $this->errorBlock($urlString, $errorMessage);
+            }
         }
-        // @codeCoverageIgnoreEnd
-
-        // return the reply same as version 1.0.x
-        return $result->reply;
+        curl_close ($ch);
+        // flatten out the "reply" so we don't have that extra (unneeded) level
+        $replyResult = get_object_vars($result->reply);
+        if($this->debug) {
+            $replyResult = array_merge($replyResult,
+                array("senddata" => $this->send , "recvdata" => $this->receive)
+            );
+        }
+        $result = (object) $replyResult;
+        $this->send = '';
+        $this->receive = '';
+        return $result;
     }
 
     /**
