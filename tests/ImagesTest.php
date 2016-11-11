@@ -49,7 +49,7 @@ class ImagesTest extends PHPUnit_Framework_TestCase
         $images = new \SlimCD\Images\Images();
         $result = $images->downloadSignature($testObject);
         $this->assertInternalType('string', $result->response);
-        $this->assertEquals('Error', $result->response); // no image will be found for this request
+        $this->assertEquals('Success', $result->response);
     }
 
     public function testGetReceiptRequest()
