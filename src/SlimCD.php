@@ -126,7 +126,7 @@ abstract class SlimCD implements Interfaces\SlimCD
                         $errorMessage = ' - Unknown JSON error';
                         break;
                 }
-                $result = $this->errorBlock($urlString, $errorMessage);
+                $result = $this->buildError($urlString, $errorMessage);
             }
         }
         curl_close ($ch);
