@@ -1,7 +1,7 @@
 # Images
 
-Most of these classes are requests are very similar. They share a lot
-of the same properties.
+Most of these requests are very similar. They share a lot
+of the same properties and return similar data.
 
 ## downloadSignature
 
