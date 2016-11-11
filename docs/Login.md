@@ -11,10 +11,10 @@ $request->username = '1032';
 $request->password = '289075';
 
 // Instantiate a new Login class
-$transact = new SlimCD\Login\Login();
+$login = new SlimCD\Login\Login();
 
 // Pass the request to the get user settings method
-$reply = $transact->getUserSettings($request);
+$reply = $login->getUserSettings($request);
 ```
 
 ## getUserClients
@@ -28,10 +28,10 @@ $request->username = '1032';
 $request->password = '289075';
 
 // Instantiate a new Login class
-$transact = new SlimCD\Login\Login();
+$login = new SlimCD\Login\Login();
 
 // Pass the request to the get user clients method
-$reply = $transact->getUserClients($request);
+$reply = $login->getUserClients($request);
 ```
 
 ## getUserClientSite
@@ -47,8 +47,8 @@ $request->clientid = 0;
 $request->siteid   = 0;
 
 // Instantiate a new Login class
-$transact = new SlimCD\Login\Login();
+$login = new SlimCD\Login\Login();
 
 // Pass the request to the get user client site method
-$reply = $transact->getUserClientSite($request);
+$reply = $login->getUserClientSite($request);
 ```
