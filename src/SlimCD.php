@@ -7,12 +7,12 @@ use GuzzleHttp\Client;
 /**
  * Class SlimCD
  * @package SlimCD
- * @version 1.1.0
+ * @version 1.1.1
  * @author Levi Durfee <ldurfee@bulldogcreative.com>
  */
 abstract class SlimCD implements Interfaces\SlimCD
 {
-    private $version = '1.1.0';
+    private $version = '1.1.1';
 
     /**
      * @var string
